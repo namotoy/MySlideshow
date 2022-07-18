@@ -60,15 +60,26 @@
     document.querySelectorAll('.thumbnails > li')[target].click();
   });
 
+  let timeoutId;
+
   function  playSlideshow() {
-    setTimeout(() =>{
+    timeoutId = setTimeout(() =>{
       next.click();
       playSlideshow();
     }, 500);
   }
 
+  let isPlaying = false;
+
   const play = document.getElementById('play');
   play.addEventListener('click', ()=>{
-    playSlideshow();
+    if (isPlaying === false){
+      playSlideshow();
+      play.textContent = '停止'
+    }else{
+      clearTimeout(timeoutId);
+      play.textContent = '再生'
+    }
+    isPlaying = !isPlaying;
   });
 }
