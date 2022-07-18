@@ -60,4 +60,15 @@
     document.querySelectorAll('.thumbnails > li')[target].click();
   });
 
+  function  playSlideshow() {
+    setTimeout(() =>{
+      next.click();
+      playSlideshow();
+    }, 500);
+  }
+
+  const play = document.getElementById('play');
+  play.addEventListener('click', ()=>{
+    playSlideshow();
+  });
 }
