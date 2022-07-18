@@ -41,4 +41,13 @@
     li.appendChild(img);
     document.querySelector('.thumbnails').appendChild(li);
   });
+
+  const next = document.getElementById('next');
+  next.addEventListener('click', () => {
+    let target = currentIndex + 1;
+    if (target === images.length){
+      target = 0;
+    }
+    document.querySelectorAll('.thumbnails > li')[target].click();
+  })
 }
